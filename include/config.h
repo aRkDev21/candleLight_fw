@@ -407,8 +407,9 @@ THE SOFTWARE.
 
     #define TIM2_CLOCK_SPEED         84000000
     #define CAN_INTERFACE            CAN1
+	#define CAN_INTERFACE2			 CAN2
     #define CAN_CLOCK_SPEED          42000000
-    #define NUM_CAN_CHANNEL          1
+    #define NUM_CAN_CHANNEL          2
 
     #define CONFIG_PHY               0 
     #define CONFIG_TERMINATION       0
