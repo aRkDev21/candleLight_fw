@@ -146,7 +146,7 @@ void gpio_init(void)
 #endif
 
 
-#if defined(BOARD_STM32F4_DevBoard)
+#if defined(BOARD_STM32F4_DevBoard) || defined(BOARD_STM32F4_DISCOVERY)
 	// initialize USB pins
 	GPIO_InitStruct.Pin = USB_Pin_DM | USB_Pin_DP;
 	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;

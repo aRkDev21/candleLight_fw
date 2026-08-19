@@ -51,6 +51,11 @@ void USB_Handler(void)
 	HAL_PCD_IRQHandler(&hpcd_USB_FS);
 }
 
+void OTG_FS_IRQHandler(void)
+{
+    HAL_PCD_IRQHandler(&hpcd_USB_FS);
+}
+
 void Default_Handler(void)
 {
 	__asm__ ("BKPT");
@@ -173,37 +178,37 @@ const pFunc InterruptVectorTable[84] = {
 	0,                    // int 34: I2C2 Error
 	0,                    // int 35: SPI1
 	0,                    // int 36: SPI2
-	0,                    // int 36: USART1
-	0,                    // int 37: USART2
-	0,                    // int 38: USART3
-	0,                    // int 39: External Line [15:10]s
-	0,                    // int 40: RTC Alarm (A and B), EXTI Line
-	0,                    // int 41: USB OTG FS Wakeup, EXTI Line
-	0,                    // int 42: TIM8 Break and TIM12
-	0,                    // int 43: TIM8 Update and TIM13
-	0,                    // int 44: TIM8 Trigger and Commutation and TIM14
-	0,                    // int 45: TIM8 Capture Compare
-	0,                    // int 46: DMA1 Stream7
-	0,                    // int 47: FSMC
-	0,                    // int 48: SDIO
-	0,                    // int 49: TIM5
-	0,                    // int 50: SPI3
-	0,                    // int 51: UART4
-	0,                    // int 52: UART5
-	0,                    // int 53: TIM6 and DAC1&2 underrun errors
-	0,                    // int 54: TIM7
-	0,                    // int 55: DMA2 Stream 0
-	0,                    // int 56: DMA2 Stream 1
-	0,                    // int 57: DMA2 Stream 2
-	0,                    // int 58: DMA2 Stream 3
-	0,                    // int 59: DMA2 Stream 4
-	0,                    // int 60: Ethernet
-	0,                    // int 61: Ethernet Wakeup, EXTI Line
-	0,                    // int 62: CAN2 TX
-	0,                    // int 63: CAN2 RX0
-	0,                    // int 64: CAN2 RX1
-	0,                    // int 65: CAN2 SCE
-	USB_Handler,          // int 66: USB OTG FS
+	0,                    // int 37: USART1
+	0,                    // int 38: USART2
+	0,                    // int 39: USART3
+	0,                    // int 40: External Line [15:10]s
+	0,                    // int 41: RTC Alarm (A and B), EXTI Line
+	0,                    // int 42: USB OTG FS Wakeup, EXTI Line
+	0,                    // int 43: TIM8 Break and TIM12
+	0,                    // int 44: TIM8 Update and TIM13
+	0,                    // int 45: TIM8 Trigger and Commutation and TIM14
+	0,                    // int 46: TIM8 Capture Compare
+	0,                    // int 47: DMA1 Stream7
+	0,                    // int 48: FSMC
+	0,                    // int 49: SDIO
+	0,                    // int 50: TIM5
+	0,                    // int 51: SPI3
+	0,                    // int 52: UART4
+	0,                    // int 53: UART5
+	0,                    // int 54: TIM6 and DAC1&2 underrun errors
+	0,                    // int 55: TIM7
+	0,                    // int 56: DMA2 Stream 0
+	0,                    // int 57: DMA2 Stream 1
+	0,                    // int 58: DMA2 Stream 2
+	0,                    // int 59: DMA2 Stream 3
+	0,                    // int 60: DMA2 Stream 4
+	0,                    // int 61: Ethernet
+	0,                    // int 62: Ethernet Wakeup, EXTI Line
+	0,                    // int 63: CAN2 TX
+	0,                    // int 64: CAN2 RX0
+	0,                    // int 65: CAN2 RX1
+	0,                    // int 66: CAN2 SCE
+	OTG_FS_IRQHandler,          // int 67: USB OTG FS
 	// don't need to define any interrupts after this one
 };
 #elif defined(STM32G0)

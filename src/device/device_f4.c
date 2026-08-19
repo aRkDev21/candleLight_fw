@@ -27,6 +27,7 @@
 #include "can.h"
 #include "device.h"
 #include "hal_include.h"
+#include "stm32f4xx_hal_rcc_ex.h"
 
 void device_can_init(can_data_t *channel, const struct board_channel_config *channel_config)
 {
@@ -60,8 +61,8 @@ void device_sysclock_config(void) {
 		.HSEState = RCC_HSE_ON,
 		.PLL.PLLState = RCC_PLL_ON,
 		.PLL.PLLSource = RCC_PLLSOURCE_HSE,
-		.PLL.PLLM = 4,
-		.PLL.PLLN = 168,
+		.PLL.PLLM = 8,
+		.PLL.PLLN = 336,
 		.PLL.PLLP = RCC_PLLP_DIV2,
 		.PLL.PLLQ = 7,
 	};
