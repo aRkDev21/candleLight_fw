@@ -51,11 +51,6 @@ void USB_Handler(void)
 	HAL_PCD_IRQHandler(&hpcd_USB_FS);
 }
 
-void OTG_FS_IRQHandler(void)
-{
-    HAL_PCD_IRQHandler(&hpcd_USB_FS);
-}
-
 void Default_Handler(void)
 {
 	__asm__ ("BKPT");
@@ -208,7 +203,7 @@ const pFunc InterruptVectorTable[84] = {
 	0,                    // int 64: CAN2 RX0
 	0,                    // int 65: CAN2 RX1
 	0,                    // int 66: CAN2 SCE
-	OTG_FS_IRQHandler,          // int 67: USB OTG FS
+	USB_Handler,          // int 67: USB OTG FS
 	// don't need to define any interrupts after this one
 };
 #elif defined(STM32G0)
