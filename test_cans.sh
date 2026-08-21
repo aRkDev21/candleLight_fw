@@ -42,9 +42,7 @@ DUMP_PID=$!
 
 sleep 0.1
 
-cat "$FP" | xxd -ps -c 8 | while read -r chunk; do
-    cansend $CAN1 "${CAN_ID}#${chunk}"
-done
+cat "$FP" | xxd -ps -c 8 | awk -v iface="$CAN1" -v id="$CAN_ID" '{print "(0.000000)", iface, id"#"$1}' | canplayer -t
 
 sleep 0.1
 
