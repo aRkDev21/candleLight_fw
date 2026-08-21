@@ -118,6 +118,24 @@ void gpio_init(void)
 	HAL_GPIO_Init(LEDTX_GPIO_Port, &GPIO_InitStruct);
 #endif
 
+#ifdef LED2RX_Pin
+	HAL_GPIO_WritePin(LED2RX_GPIO_Port, LED2RX_Pin, GPIO_INIT_STATE(LED2RX_Active_High));
+	GPIO_InitStruct.Pin = LED2RX_Pin;
+	GPIO_InitStruct.Mode = LED2RX_Mode;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(LED2RX_GPIO_Port, &GPIO_InitStruct);
+#endif
+
+#ifdef LED2TX_Pin
+	HAL_GPIO_WritePin(LED2TX_GPIO_Port, LED2TX_Pin, GPIO_INIT_STATE(LED2TX_Active_High));
+	GPIO_InitStruct.Pin = LED2TX_Pin;
+	GPIO_InitStruct.Mode = LED2TX_Mode;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(LED2TX_GPIO_Port, &GPIO_InitStruct);
+#endif
+
 	if (IS_ENABLED(CONFIG_PHY_STANDBY)) {
 		HAL_GPIO_WritePin(nCANSTBY_Port, nCANSTBY_Pin, GPIO_INIT_STATE(nCANSTBY_Active_High));
 		GPIO_InitStruct.Pin = nCANSTBY_Pin;

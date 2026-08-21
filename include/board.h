@@ -31,7 +31,6 @@
  */
 
 #include "config.h"
-#include "stm32f042x6.h"
 #include "usbd_gs_can.h"
 #include <stdint.h>
 

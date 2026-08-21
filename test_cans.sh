@@ -28,7 +28,7 @@ done
 
 if [[ -z "$CAN1" || -z "$CAN2" || -z "$FP" ]]; then
     echo "Missing required args"
-    echo "Use: $0 --can1=VALUE --can2=VALUE --fp=VALUE"
+    echo "Usage: $0 --can1=VALUE --can2=VALUE --fp=VALUE"
     exit 1
 fi
 
@@ -37,7 +37,7 @@ echo "CAN 2:  $CAN2"
 echo "File:   $FP"
 
 CAN_ID='228'
-candump -L "$CAN2,$CAN_ID:7FF" | awk '{print $3}' | cut -d'#' -f2 | xxd -ps -r > copy_file.bin &
+candump -L "$CAN2,$CAN_ID:7FF" > >(awk -F'#' '{print $2; fflush()}' | xxd -ps -r > copy_file.bin) &
 DUMP_PID=$!
 
 sleep 0.1
@@ -49,6 +49,8 @@ done
 sleep 0.1
 
 kill $DUMP_PID 2>/dev/null
+
+sleep 0.1
 
 if cmp -s "$FP" copy_file.bin; then
     echo "Done! All good!"
