@@ -424,6 +424,16 @@ THE SOFTWARE.
     #define LEDTX_Mode               GPIO_MODE_OUTPUT_PP
     #define LEDTX_Active_High        1
 
+	#define LED2TX_GPIO_Port         GPIOD
+    #define LED2TX_Pin               GPIO_PIN_13
+    #define LED2TX_Mode              GPIO_MODE_OUTPUT_PP
+    #define LED2TX_Active_High       1
+
+	#define LED2RX_GPIO_Port          GPIOD
+    #define LED2RX_Pin                GPIO_PIN_15
+    #define LED2RX_Mode               GPIO_MODE_OUTPUT_PP
+    #define LED2RX_Active_High        1
+
     #define USB_GPIO_Port            GPIOA
     #define USB_Pin_DM               GPIO_PIN_11
     #define USB_Pin_DP               GPIO_PIN_12

@@ -31,7 +31,9 @@
  */
 
 #include "config.h"
+#include "stm32f042x6.h"
 #include "usbd_gs_can.h"
+#include <stdint.h>
 
 struct board_channel_config {
 #if defined(CONFIG_BXCAN)
@@ -39,6 +41,13 @@ struct board_channel_config {
 #elif defined(CONFIG_M_CAN)
 	FDCAN_GlobalTypeDef *interface;
 #endif
+	GPIO_TypeDef   *led_rx_port;
+	uint16_t 	   led_rx_pin;
+	bool 		   led_rx_active;
+
+	GPIO_TypeDef   *led_tx_port;
+    uint16_t       led_tx_pin;
+    bool           led_tx_active;
 };
 
 struct board_config {
